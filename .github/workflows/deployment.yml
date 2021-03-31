@@ -8,9 +8,8 @@ on:
     branches:
       - master
 env:
-  AZURE_WEBAPP_FRONTEND: 'contoso-webapp'
   AZURE_WEBAPP_NAME: 'webrtctestserver'    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '10.x'
 
 jobs:
@@ -26,15 +25,10 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-    
-    - name: Setup__.net__core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }} 
 
     - name: Print working directory
       run: |
@@ -47,7 +41,7 @@ jobs:
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-        package: '${{ env.working-directory }}'
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     
     #If failure raise issue
   
