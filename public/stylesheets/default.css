@@ -1,0 +1,12 @@
+.outer-container {
+  margin-top: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+  padding: 20px;
+  background-color:rgba(117, 117, 117, 0.425);
+}
+
+.custom-navbar-container {
+  margin: 0px;
+  padding: 0px;
+}

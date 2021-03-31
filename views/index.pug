@@ -1,0 +1,14 @@
+extends layout 
+
+block content
+    
+    div(class="outer-container")
+        form(action="")
+            h1 Send Message
+            div(class="mb-3")
+                label(for="exampleInputEmail1" class="form-label") Username
+                input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp")
+            div(class="mb-3")
+                label(for="exampleInputPassword1" class="form-label") Message
+                textarea(type="password" class="form-control" id="exampleInputPassword1") 
+            button(type="submit" class="btn btn-outline-dark") Submit
