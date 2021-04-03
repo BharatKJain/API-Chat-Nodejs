@@ -51,4 +51,4 @@ jobs:
         app-name: 'webrtctestserver'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_84c549a65c7044fd9bca3ff4ef59bd01 }}
-        package: .
+        package: . 
