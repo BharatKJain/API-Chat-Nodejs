@@ -7,6 +7,9 @@
 var app = require('./app');
 var debug = require('debug')('sample-app:server');
 var http = require('http');
+var mongoose = require('mongoose');
+const dotenv=require("dotenv");
+dotenv.config();
 
 /**
  * Get port from environment and store in Express.
@@ -24,11 +27,21 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
+ conn=mongoose.connect(process.env.DATABASE_CONNECTION_STRING,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    }
+  ).then(()=>{
+    console.log("Database Connected...");
+    console.log("Server Started!");
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
+  }).catch((err)=>{
+    console.log(err);
+  });
 /**
  * Normalize a port into a number, string, or false.
  */

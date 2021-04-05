@@ -3,3 +3,4 @@ dev-files
 public/html
 node_modules
 package-lock.json
+.env

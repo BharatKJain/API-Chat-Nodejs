@@ -3,12 +3,17 @@ extends layout
 block content
     
     div(class="outer-container")
-        form(action="")
+        form(action="/" method="POST")
             h1 Send Message
             div(class="mb-3")
                 label(for="exampleInputEmail1" class="form-label") Username
-                input(type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp")
+                input(type="text" class="form-control" name="username" )
             div(class="mb-3")
                 label(for="exampleInputPassword1" class="form-label") Message
-                textarea(type="password" class="form-control" id="exampleInputPassword1") 
-            button(type="submit" class="btn btn-outline-dark") Submit
+                textarea(type="text" class="form-control" name="message") 
+            button(type="submit" class="btn btn-outline-dark") Submit 
+    div(class="outer-container")
+        h1 Received Messages
+        ul(class="list-group")
+            each item in Messages
+                li(class="list-group-item")=item.username+" : "+item.message

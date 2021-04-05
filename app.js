@@ -1,13 +1,19 @@
 const express = require("express");
 var createError = require('http-errors');
 const path = require("path");
+const favicon = require('serve-favicon');
+const dotenv = require('dotenv');
+dotenv.config();
+console.log(` database connection string : ${process.env.DATABASE_CONNECTION_STRING}`)
 
 var indexRouter=require("./routes/index");
 var aboutRouter=require("./routes/about")
 
 const app = express();
 
+app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname , 'public')));
+app.use(favicon(path.join(__dirname,'public','favicon.png'))); 
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
